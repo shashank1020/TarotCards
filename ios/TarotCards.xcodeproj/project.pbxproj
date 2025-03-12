@@ -11,6 +11,9 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		322812A98C6C4ED1BEA33C7D /* MajorMonoDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1C1DE3072514562BE58AC71 /* MajorMonoDisplay-Regular.ttf */; };
+		7B89773B11DD4732A586B5E6 /* ZillaSlabHighlight-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F69415B75E55445B9FBA9DBF /* ZillaSlabHighlight-Bold.ttf */; };
+		9A30B219EF4D4BA993BA2CD7 /* ZillaSlabHighlight-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC8177C708B34226BC6F3C1C /* ZillaSlabHighlight-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,9 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = TarotCards/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TarotCards/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		E1C1DE3072514562BE58AC71 /* MajorMonoDisplay-Regular.ttf */ = {isa = PBXFileReference; name = "MajorMonoDisplay-Regular.ttf"; path = "../assets/fonts/MajorMonoDisplay-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F69415B75E55445B9FBA9DBF /* ZillaSlabHighlight-Bold.ttf */ = {isa = PBXFileReference; name = "ZillaSlabHighlight-Bold.ttf"; path = "../assets/fonts/ZillaSlabHighlight-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CC8177C708B34226BC6F3C1C /* ZillaSlabHighlight-Regular.ttf */ = {isa = PBXFileReference; name = "ZillaSlabHighlight-Regular.ttf"; path = "../assets/fonts/ZillaSlabHighlight-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				258F84F5388940F1BBCD1C9C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -115,6 +122,17 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		258F84F5388940F1BBCD1C9C /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				E1C1DE3072514562BE58AC71 /* MajorMonoDisplay-Regular.ttf */,
+				F69415B75E55445B9FBA9DBF /* ZillaSlabHighlight-Bold.ttf */,
+				CC8177C708B34226BC6F3C1C /* ZillaSlabHighlight-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -185,6 +203,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				322812A98C6C4ED1BEA33C7D /* MajorMonoDisplay-Regular.ttf in Resources */,
+				7B89773B11DD4732A586B5E6 /* ZillaSlabHighlight-Bold.ttf in Resources */,
+				9A30B219EF4D4BA993BA2CD7 /* ZillaSlabHighlight-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

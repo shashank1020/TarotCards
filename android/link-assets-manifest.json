@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/MajorMonoDisplay-Regular.ttf",
+      "sha1": "6cd7e5ff1b9865efff78dfb6ba31182a358b5503"
+    },
+    {
+      "path": "assets/fonts/ZillaSlabHighlight-Bold.ttf",
+      "sha1": "767f02d5fed5efb75ee1ccc4122235f0f6af5a25"
+    },
+    {
+      "path": "assets/fonts/ZillaSlabHighlight-Regular.ttf",
+      "sha1": "24c028c9f87674e543136b4ff3f993fe85da509e"
+    }
+  ]
+}
