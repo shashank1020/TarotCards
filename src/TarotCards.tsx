@@ -7,10 +7,7 @@ import {
   View,
 } from 'react-native';
 import AnimatedCard from './AnimatedCard.tsx';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-} from 'react-native-reanimated';
+import {useSharedValue} from 'react-native-reanimated';
 import FONTS from '../assets/fonts';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
@@ -27,38 +24,24 @@ const cards = [
   {source: require('../assets/images/moon.png')},
   {source: require('../assets/images/tower.png')},
   {source: require('../assets/images/devil.png')},
-  {source: require('../assets/images/sun.png')},
-  {source: require('../assets/images/strength.png')},
-  {source: require('../assets/images/temperance.png')},
-  {source: require('../assets/images/death.png')},
-  {source: require('../assets/images/justice.png')},
-  {source: require('../assets/images/hermit.png')},
+  // {source: require('../assets/images/sun.png')},
+  // {source: require('../assets/images/strength.png')},
+  // {source: require('../assets/images/temperance.png')},
+  // {source: require('../assets/images/death.png')},
+  // {source: require('../assets/images/justice.png')},
+  // {source: require('../assets/images/hermit.png')},
 ];
 
 function TarotCards() {
   const navigation = useNavigation<any>();
-  const translateX = useSharedValue(0);
-  // useEffect(() => {
-  //   translateX.value = withDelay(
-  //     1000,
-  //     withTiming(100, {duration: 1000, easing: Easing.inOut(Easing.ease)}),
-  //   );
-  // }, []);
-  const style = useAnimatedStyle(() => ({
-    transform: [
-      // {perspective: 1000},
-      {rotateX: '-30deg'},
-      {translateX: translateX.value},
-    ],
-  }));
   const shuffleBack = useSharedValue(false);
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#4d4eb8'}}>
       <GestureHandlerRootView>
         <View style={styles.container}>
-          <Animated.View style={[styles.header, style]}>
+          <View style={[styles.header]}>
             <Text style={styles.text}>Tarot Cards</Text>
-          </Animated.View>
+          </View>
           <TouchableOpacity
             style={styles.about}
             onPress={() => navigation.navigate('About')}>
@@ -90,8 +73,8 @@ const styles = StyleSheet.create({
   },
   text: {
     backgroundColor: 'rgba(239,238,238,0.3)',
-    fontSize: 30,
-    fontFamily: FONTS.MajorMonoDisplay_Regular,
+    fontSize: 24,
+    fontFamily: FONTS.ZillaSlabHighlight_Bold,
   },
   text2: {
     // backgroundColor: 'red',
@@ -108,6 +91,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     // position: 'absolute',
     marginRight: 10,
+    marginTop: 5,
 
     // backgroundColor: 'red',
   },

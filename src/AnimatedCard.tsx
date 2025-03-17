@@ -13,16 +13,18 @@ import Animated, {
 } from 'react-native-reanimated';
 import {snapPoint} from 'react-native-redash';
 
+// Get screen dimensions
 const {width, height} = Dimensions.get('window');
 const aspectRatio = 722 / 368;
 const CARD_WIDTH = width - 128;
 const CARD_HEIGHT = CARD_WIDTH * aspectRatio;
 const CARD_PADDING = 8;
-const IMAGE_WIDTH = (CARD_WIDTH) - (CARD_PADDING * 2);
+const IMAGE_WIDTH = CARD_WIDTH - CARD_PADDING * 2;
 const DURATION = 250;
 const side = (width + CARD_WIDTH + 260) / 2;
 const sideH = (height + CARD_HEIGHT + 100) / 2;
 
+// Define snap points for X and Y axis
 const SNAP_POINTS_X = [-side, 0, side];
 const SNAP_POINTS_Y = [-sideH, 0, sideH];
 
@@ -35,19 +37,19 @@ interface CardProps {
 }
 
 function AnimatedCard({card: {source}, index, shuffleBack}: CardProps) {
+  // Shared values for animation
   const offset = useSharedValue({x: 0, y: 0});
   const translateX = useSharedValue(0);
-  // card init position is outside the screen
-  const translateY = useSharedValue(-height);
+  const translateY = useSharedValue(-height); // Initial position off-screen (top)
   const scale = useSharedValue(1);
   const rotateZ = useSharedValue(0);
   const rotateX = useSharedValue(30);
   const perspectiveX = useSharedValue(1500);
   const delay = index * DURATION;
-  const theta = -10 + Math.random() * 20; // -10 to 10
+  const theta = -10 + Math.random() * 20; // Random initial rotation between -10 to 10 degrees
 
   useEffect(() => {
-    // on mount card drop from top
+    // Drop cards from top on mount
     translateY.value = withDelay(
       delay,
       withTiming(0, {duration: DURATION, easing: Easing.inOut(Easing.ease)}),
@@ -55,7 +57,7 @@ function AnimatedCard({card: {source}, index, shuffleBack}: CardProps) {
     rotateZ.value = withDelay(delay, withSpring(theta));
   }, [delay, index, rotateZ, theta, translateY]);
 
-  // if shuffle true then card are set back to its center of the screen
+  // Listen for shuffleBack trigger and reset card positions
   useAnimatedReaction(
     () => shuffleBack.value,
     v => {
@@ -78,19 +80,23 @@ function AnimatedCard({card: {source}, index, shuffleBack}: CardProps) {
     },
   );
 
+  // Gesture for dragging the card
   const panGesture = Gesture.Pan()
     .onBegin(() => {
+      // Store the initial position when gesture starts
       offset.value = {x: translateX.value, y: translateY.value};
-      rotateZ.value = withTiming(0);
-      scale.value = withTiming(1.1);
-      perspectiveX.value = withTiming(10000);
+      rotateZ.value = withTiming(0); // Reset rotation when dragging starts
+      scale.value = withTiming(1.1); // Scale up slightly for effect
+      perspectiveX.value = withTiming(10000); // Change perspective for depth effect
       rotateX.value = withTiming(0);
     })
     .onUpdate(event => {
+      // Update card position based on gesture movement
       translateY.value = event.translationY + offset.value.y;
       translateX.value = event.translationX + offset.value.x;
     })
     .onEnd(event => {
+      // Snap to nearest point on release
       const dist = snapPoint(translateX.value, event.velocityX, SNAP_POINTS_X);
       const distY = snapPoint(translateY.value, event.velocityY, SNAP_POINTS_Y);
       translateX.value = withSpring(dist, {
@@ -107,7 +113,7 @@ function AnimatedCard({card: {source}, index, shuffleBack}: CardProps) {
           shuffleBack.value = true;
         }
       });
-      const theta = -10 + Math.random() * 20; // -10 to 10
+      const theta = -10 + Math.random() * 20;
       rotateZ.value = withSpring(theta);
       perspectiveX.value = withTiming(1500);
       rotateX.value = withTiming(30);
@@ -122,12 +128,13 @@ function AnimatedCard({card: {source}, index, shuffleBack}: CardProps) {
           shuffleBack.value = true;
         }
       });
-      const theta = -10 + Math.random() * 20; // -10 to 10
+      const theta = -10 + Math.random() * 20;
       rotateZ.value = withSpring(theta);
       perspectiveX.value = withTiming(1500);
       rotateX.value = withTiming(30);
     });
 
+  // Apply animated styles to the card
   const style = useAnimatedStyle(() => ({
     transform: [
       {perspective: perspectiveX.value},
@@ -139,6 +146,7 @@ function AnimatedCard({card: {source}, index, shuffleBack}: CardProps) {
       {rotateX: `${rotateX.value}deg`},
     ],
   }));
+
   return (
     <View
       style={[styles.container, {zIndex: 1 + index}]}
