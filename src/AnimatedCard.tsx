@@ -17,7 +17,8 @@ const {width, height} = Dimensions.get('window');
 const aspectRatio = 722 / 368;
 const CARD_WIDTH = width - 128;
 const CARD_HEIGHT = CARD_WIDTH * aspectRatio;
-const IMAGE_WIDTH = CARD_WIDTH;
+const CARD_PADDING = 8;
+const IMAGE_WIDTH = (CARD_WIDTH) - (CARD_PADDING * 2);
 const DURATION = 250;
 const side = (width + CARD_WIDTH + 260) / 2;
 const sideH = (height + CARD_HEIGHT + 100) / 2;
@@ -167,15 +168,15 @@ const styles = StyleSheet.create({
     height: CARD_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  image: {
+    padding: CARD_PADDING,
     backgroundColor: '#FFF',
-    width: IMAGE_WIDTH,
-    height: IMAGE_WIDTH * aspectRatio,
     borderRadius: 10,
     overflow: 'hidden',
     borderWidth: 0.6,
-    padding: 8,
+  },
+  image: {
+    width: IMAGE_WIDTH,
+    height: IMAGE_WIDTH * aspectRatio,
   },
 });
 
