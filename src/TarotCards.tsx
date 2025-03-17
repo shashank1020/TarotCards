@@ -1,5 +1,11 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import AnimatedCard from './AnimatedCard.tsx';
 import Animated, {
   useAnimatedStyle,
@@ -7,6 +13,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import FONTS from '../assets/fonts';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 
 const cards = [
   {source: require('../assets/images/world.png')},
@@ -29,6 +36,7 @@ const cards = [
 ];
 
 function TarotCards() {
+  const navigation = useNavigation<any>();
   const translateX = useSharedValue(0);
   // useEffect(() => {
   //   translateX.value = withDelay(
@@ -38,7 +46,7 @@ function TarotCards() {
   // }, []);
   const style = useAnimatedStyle(() => ({
     transform: [
-      {perspective: 2000},
+      // {perspective: 1000},
       {rotateX: '-30deg'},
       {translateX: translateX.value},
     ],
@@ -51,7 +59,11 @@ function TarotCards() {
           <Animated.View style={[styles.header, style]}>
             <Text style={styles.text}>Tarot Cards</Text>
           </Animated.View>
-
+          <TouchableOpacity
+            style={styles.about}
+            onPress={() => navigation.navigate('About')}>
+            <Text style={styles.text2}>About ➡</Text>
+          </TouchableOpacity>
           {cards.map((img, index) => (
             <React.Fragment key={index}>
               <AnimatedCard
@@ -78,8 +90,26 @@ const styles = StyleSheet.create({
   },
   text: {
     backgroundColor: 'rgba(239,238,238,0.3)',
-    fontSize: 20,
-    fontFamily: FONTS.ZillaSlabHighlight_Bold,
+    fontSize: 30,
+    fontFamily: FONTS.MajorMonoDisplay_Regular,
+  },
+  text2: {
+    // backgroundColor: 'red',
+    fontSize: 12,
+    color: '#FFF',
+    paddingBottom: 3,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255,255,255,0.67)',
+    // fontFamily: FONTS.MajorMonoDisplay_Regular,
+    // textDecorationLine: 'underline',
+  },
+  about: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: 'flex-end',
+    // position: 'absolute',
+    marginRight: 10,
+
+    // backgroundColor: 'red',
   },
 });
 
