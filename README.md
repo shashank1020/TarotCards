@@ -1,6 +1,6 @@
 # Tarot Cards
 
-[demo.mov](assets/demo.mov)
+[<img src="assets/Demo%20Screenshot.png" width="200"  title="DemoVideo"/>](https://youtube.com/shorts/6kR3glDYXdo?feature=share)
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [
 `@react-native-community/cli`](https://github.com/react-native-community/cli).
